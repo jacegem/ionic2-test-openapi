@@ -1,0 +1,41 @@
+<ion-navbar *navbar>
+  <ion-title>
+    Home
+  </ion-title>
+  <ion-buttons end>
+    <button primary>I'm a primary coloured button in the end position of the nav bar</button>
+  </ion-buttons>
+</ion-navbar>
+
+<ion-content class="home">
+  <ion-item>
+    <ion-label floating>KEY</ion-label>
+    <ion-input [(ngModel)]="key" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>VAL</ion-label>
+    <ion-input [(ngModel)]="val" type="text"></ion-input>
+  </ion-item>
+  <button (click)="sendFirebase()">send firebase</button>
+
+  <ion-card>
+    <ion-card-content>
+      Hello World, this is my camera app
+      <button (click)="takePicture()">Take a Picture</button> Latest Picture:
+      <img [src]="base64Image" *ngIf="base64Image" />
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <button (click)="getList()">get list</button>
+    <ion-list>
+      <ion-item *ngFor="#data of datas">
+        <h3>{{data.title}}</h3>
+        <p>{{data.contentid}}</p>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (infinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-card>
+</ion-content>
